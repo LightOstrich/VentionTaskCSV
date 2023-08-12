@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "H9T40pvFFgw1VWftlblOTGCp8QeYtD6bottfwyAx0AA=",
+  "Source": "CSVParserVentionTask",
+  "BasePath": "_content/CSVParserVentionTask",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
