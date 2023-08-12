@@ -17,11 +17,17 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("upload")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> UploadUsers(IFormFile file)
     {
         //Parse CSV file
         using (var reader = new StreamReader(file.OpenReadStream()))
         {
+            if (file == null)
+            {
+                return BadRequest();
+            }
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 var users = csv.GetRecords<User>();
@@ -50,7 +56,7 @@ public class UsersController : ControllerBase
         return Ok();
     }
 
-    [HttpGet]
+    [HttpGet("getUsers")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetUsers(string sortDirection, string sortBy = "username",
